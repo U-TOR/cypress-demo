@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "dev:install": "cd client && npm install; cd ..; cd server && npm install",
+    "dev:run": "concurrently \"npm run server\" \"npm run client\"",
+    "mongo:start": "docker run --name realworld-mongo -p 27017:27017 mongo & sleep 5",
+    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo"
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,7 @@
   },
   "homepage": "https://github.com/vikmaksimenko/cypress_demo#readme",
   "devDependencies": {
+    "concurrently": "^4.1.1",
     "cypress": "^3.4.0"
   }
 }
