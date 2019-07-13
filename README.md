@@ -11,16 +11,33 @@ Requirements:
 Run app 
 -------
 
-1. Install dependencies - `npm run dev:install`
+1. Install dependencies 
+    ```
+    npm run dev:install
+    ```
 2. Start DB    
-    a. With Mongo - `mongod --config /usr/local/etc/mongod.conf`   
+    a. With Mongo 
+    ```
+    mongod --config /usr/local/etc/mongod.conf
+    ```   
     _or_   
-    b. With Docker - `npm run mongo:start`
-3. Run servers - `npm run dev:run`
+    b. With Docker 
+    ```
+    npm run mongo:start
+    ```
+3. Run servers 
+   ```
+   npm run dev:run
+   ```
 
 
-Run tests
+Workshop steps: 
 ---------
 
-_TBD_
+1. _8b26a_ - Cypress install
+    ```
+    npm install cypress --save-dev
+    $(npm bin)/cypress open
+    ```
+2.  
 
