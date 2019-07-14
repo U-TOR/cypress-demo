@@ -16,7 +16,8 @@ context('Sign up tests', () => {
 
     cy.get(".btn").contains("Sign up").click();
 
-    cy.get(".user-pic").should("be.visible");
+    cy.get(".user-pic").should("be.visible")
+        .parent().should("have.text", "newuser");
   });
 
 });

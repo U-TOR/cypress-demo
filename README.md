@@ -65,5 +65,7 @@ Workshop steps:
     npm run mongo:restore
     ```    
     b. To login, do POST with creds to /api/users/login and set them to local storage to "jwt"
-
+    c. Add test. Use fixtures for post data
+5. Show cypress dashboard
+    
 
