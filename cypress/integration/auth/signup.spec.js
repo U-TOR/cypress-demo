@@ -2,6 +2,7 @@
 
 context('Sign up tests', () => {
   before(() => {
+    cy.task("deleteUser", "new-user@test.com");
     cy.visit('/')
   });
 
