@@ -23,3 +23,18 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("login", (email, password) => {
+    cy.request("POST", "http://localhost:3000/api/users/login", {
+        user: {
+            email: email,
+            password: password
+        }
+    })
+        .its("body.user.token")
+        .should("exist")
+        .then(token => {
+            localStorage.setItem("jwt", token)
+        });
+    cy.visit("/")
+});

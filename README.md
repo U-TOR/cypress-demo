@@ -59,6 +59,11 @@ Workshop steps:
 
     return null;
     ```
-    
+4. Add test for posts: 
+    a. Restore DB with user testuser@test.com/1q1q1q from backup
+    ```
+    npm run mongo:restore
+    ```    
+    b. To login, do POST with creds to /api/users/login and set them to local storage to "jwt"
 
 

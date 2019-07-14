@@ -9,8 +9,10 @@
     "server": "cd server && npm start",
     "dev:install": "cd client && npm install; cd ..; cd server && npm install",
     "dev:run": "concurrently \"npm run server\" \"npm run client\"",
-    "mongo:start": "docker run --name realworld-mongo -p 27017:27017 mongo & sleep 5",
-    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo"
+    "mongo:start": "docker run --name realworld-mongo -p 27017:27017 -v db:/data/db mongo & sleep 5",
+    "mongo:restore": "docker run --rm --link realworld-mongo:mongo -v $(pwd)/db:/backup mongo  bash -c 'mongorestore --archive=/backup/minimal.archive --host realworld-mongo:27017'",
+    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
+    "pwd": "ls db"
   },
   "repository": {
     "type": "git",

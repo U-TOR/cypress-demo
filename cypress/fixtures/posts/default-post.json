@@ -1,0 +1,9 @@
+{
+  "title": "Test Title",
+  "description": "Min description",
+  "content": "Test content",
+  "tags": [
+    "tag1",
+    "tag2"
+  ]
+}
