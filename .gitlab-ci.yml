@@ -1,4 +1,4 @@
-image: "vmaksimenko/docker-node"
+image: "vmaksimenko/mongo-node"
 
 stages: 
   - test
@@ -8,8 +8,8 @@ run_test:
   stage: test
   script: 
     - npm run dev:install
-    - npm run mongo:start
-    - npm run mongo:restore
+    # - npm run mongo:start
+    # - npm run mongo:restore
     - nohup npm run dev:run &
     - npm test
 
