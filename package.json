@@ -4,14 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wait-on http://localhost:4100 && cypress run --record --key 0eec5036-c20d-4e46-8839-1adf3705de77",
     "client": "cd client && npm start",
     "server": "cd server && npm start",
-    "dev:install": "cd client && npm install ; cd ../server && npm install; npm install",
+    "dev:install": "cd client && npm install ; cd ../server && npm install",
     "dev:run": "concurrently \"npm run server\" \"npm run client\"",
     "mongo:start": "docker run -d --name realworld-mongo -p 27017:27017 -v db:/data/db mongo",
     "mongo:restore": "docker run --rm --link realworld-mongo:mongo -v $(pwd)/db:/backup mongo  bash -c 'mongorestore --archive=/backup/minimal.archive --host realworld-mongo:27017'",
-    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo"
+    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
+    "wait-for-server": "wait-on http://localhost:4100",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:record": "cypress run --record --key 0eec5036-c20d-4e46-8839-1adf3705de77",
+    "merge_reports": "mochawesome-merge --reportDir mochawesome-report > mochawesome-report/output.json",
+    "generate_mochawesome_report": "marge mochawesome-report/output.json",
+    "cleanup": "rm -fr mochawesome-report",
+    "e2e_mochawesome": "npm run cleanup; npm run cy:run:record; npm run merge_reports; npm run generate_mochawesome_report"
   },
   "repository": {
     "type": "git",
@@ -29,6 +36,9 @@
   },
   "dependencies": {
     "concurrently": "^4.1.1",
+    "mocha": "^5.2.0",
+    "mochawesome": "^4.0.1",
+    "mochawesome-merge": "^2.0.1",
     "wait-on": "^3.3.0"
   }
 }
