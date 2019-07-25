@@ -1,4 +1,4 @@
-image: "docker"
+image: "vmaksimenko/docker-node"
 
 stages: 
   - test
