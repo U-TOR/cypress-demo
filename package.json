@@ -4,15 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wait-on http://localhost:4100 && cypress run --record --key 0eec5036-c20d-4e46-8839-1adf3705de77",
     "client": "cd client && npm start",
     "server": "cd server && npm start",
-    "dev:install": "cd client && npm install; cd ..; cd server && npm install",
+    "dev:install": "cd client && npm install ; cd ../server && npm install; npm install",
     "dev:run": "concurrently \"npm run server\" \"npm run client\"",
-    "mongo:start": "docker run --name realworld-mongo -p 27017:27017 -v db:/data/db mongo & sleep 5",
+    "mongo:start": "docker run -d --name realworld-mongo -p 27017:27017 -v db:/data/db mongo",
     "mongo:restore": "docker run --rm --link realworld-mongo:mongo -v $(pwd)/db:/backup mongo  bash -c 'mongorestore --archive=/backup/minimal.archive --host realworld-mongo:27017'",
-    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
-    "pwd": "ls db"
+    "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo"
   },
   "repository": {
     "type": "git",
@@ -25,8 +24,11 @@
   },
   "homepage": "https://github.com/vikmaksimenko/cypress_demo#readme",
   "devDependencies": {
-    "concurrently": "^4.1.1",
     "cypress": "^3.4.0",
-    "mongodb": "^3.2.7"
+    "mongodb": "^3.2.7",
+    "wait-on": "^3.3.0"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.1"
   }
 }

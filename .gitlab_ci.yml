@@ -1,0 +1,15 @@
+image: "docker"
+
+stages: 
+  - test
+  - deploy
+
+run_test: 
+  stage: test
+  script: 
+    - npm run dev:install
+    - npm run mongo:start
+    - npm run mongo:restore
+    - nohup npm run dev:run &
+    - npm test
+
