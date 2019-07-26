@@ -36,8 +36,9 @@ run_test:
   stage: build
 
   script:
-    - npm install 
-    - $(npm bin)/cypress verify
+    - cypress verify
+    # - npm install 
+    # - $(npm bin)/cypress verify
     # - npm run dev:install
     # - npm run cy:verify
     # - npm run dev:install
