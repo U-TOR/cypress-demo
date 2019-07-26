@@ -23,8 +23,10 @@ services:
   - docker
 
 before_install:
-- npm run mongo:start
-- npm run mongo:restore
+  - npm run dev:install
+  - npm run cy:verify
+  - npm run mongo:start
+  - npm run mongo:restore
 
 script: 
   - nohup npm run dev:run &
