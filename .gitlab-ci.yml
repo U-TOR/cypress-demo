@@ -7,8 +7,8 @@ stages:
 run_test: 
   stage: test
   script:
-    - npm run cy:verify
     - npm run dev:install
+    - npm run cy:verify
     # - npm run mongo:start
     - npm run mongo:restore:local
     - nohup npm run dev:run &
