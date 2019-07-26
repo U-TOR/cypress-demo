@@ -1,5 +1,8 @@
 language: node_js
 
+node_js:
+  - "11.8.0"
+
 # if using Ubuntu 16 need this library
 # https://github.com/cypress-io/cypress-documentation/pull/1647
 addons:
@@ -7,14 +10,14 @@ addons:
     packages:
     - libgconf-2-4
 
-# cache:
-#   # cache both npm modules and Cypress binary
-#   directories:
-#     - ~/.npm
-#     - ~/.cache
-#   override:
-#     - npm run dev:install
-#     - npm run cy:verify
+cache:
+  # cache both npm modules and Cypress binary
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm run dev:install
+    - npm run cy:verify
 
 services:
   - docker
