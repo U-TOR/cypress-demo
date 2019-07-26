@@ -1,4 +1,4 @@
-Cypress.io Testing Demo Project - [![Build Status](https://travis-ci.com/vikmaksimenko/cypress_demo.svg?branch=master)](https://travis-ci.com/vikmaksimenko/cypress_demo)
+Cypress.io Testing Demo Project [![Build Status](https://travis-ci.com/vikmaksimenko/cypress_demo.svg?branch=master)](https://travis-ci.com/vikmaksimenko/cypress_demo)
 ===============================
 
 This project shows Cypress.io tools on ["RealWorld example app"](https://github.com/gothinkster/realworld). We used React + Redux client + Node/Express server. Also, [Testing Workshop](https://github.com/kentcdodds/testing-workshop) project was a good inspiration for this Project
@@ -47,6 +47,7 @@ Run app
     ```
     npm run e2e_mochawesome
     ```
+    See reports on http://cypress-demo.surge.sh/
 
 Cypress Dashboard
 -----------------
