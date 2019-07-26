@@ -1,4 +1,4 @@
-Cypress.io Testing Demo Project
+Cypress.io Testing Demo Project - [![Build Status](https://travis-ci.com/vikmaksimenko/cypress_demo.svg?branch=master)](https://travis-ci.com/vikmaksimenko/cypress_demo)
 ===============================
 
 This project shows Cypress.io tools on ["RealWorld example app"](https://github.com/gothinkster/realworld). We used React + Redux client + Node/Express server. Also, [Testing Workshop](https://github.com/kentcdodds/testing-workshop) project was a good inspiration for this Project
@@ -25,11 +25,33 @@ Run app
     ```
     npm run mongo:start
     ```
-3. Run servers 
+3. Restore a data to DB    
+    a. With Mongo 
+    ```
+    npm mongo:restore:local
+    ```   
+    _or_   
+    b. With Docker 
+    ```
+    npm mongo:restore
+    ```
+4. Run servers 
    ```
    npm run dev:run
    ```
+5. Run tests: 
+    ```
+    npm run cy:run:record
+    ```
+6. (Optional) To run tests with Mochawesome reporter, call 
+    ```
+    npm run e2e_mochawesome
+    ```
 
+Cypress Dashboard
+-----------------
+
+To view test runs in Cypress Dashboard, follow https://dashboard.cypress.io/#/projects/3v3cpa/runs
 
 Workshop steps: 
 ---------

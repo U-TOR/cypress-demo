@@ -23,10 +23,14 @@ services: mongodb
 before_install:
   - npm run dev:install
   - npm run cy:verify
-  # - npm run mongo:start
   - npm run mongo:restore:local
 
 script: 
   - nohup npm run dev:run &
   - npm run wait-for-server
   - npm run e2e_mochawesome
+
+deploy:
+  provider: surge
+  project: ./mochawesome-report/
+  domain: cypress-demo.surge.sh
