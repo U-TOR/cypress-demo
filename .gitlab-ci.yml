@@ -23,22 +23,29 @@ services:
   - mongo
 
 # this job installs NPM dependencies and Cypress
-install:
+# install:
+#   image: cypress/base:10
+#   stage: build
+
+#   script:
+#     - npm run dev:install
+#     - npm run cy:verify
+
+run_test: 
   image: cypress/base:10
   stage: build
 
   script:
-    - npm run dev:install
-    - npm run cy:verify
-
-run_test: 
-  script:
-    - npm run dev:install
-    - npm run cy:verify
+    - npm install 
+    - $(npm bin)/cypress verify
+    # - npm run dev:install
+    # - npm run cy:verify
+    # - npm run dev:install
+    # - npm run cy:verify
     # - npm run mongo:start
     # - ps -aux | grep 21017
     # - npm run mongo:restore:local
-    - nohup npm run dev:run &
-    - npm run wait-for-server
-    - npm run e2e_mochawesome
+    # - nohup npm run dev:run &
+    # - npm run wait-for-server
+    # - npm run e2e_mochawesome
 
