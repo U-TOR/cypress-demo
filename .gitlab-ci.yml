@@ -1,11 +1,18 @@
-image: "vmaksimenko/mongo-cypress"
+image: node:4.4.0
 
-stages: 
-  - test
-  - deploy
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+  - node_modules/
+
+services:
+  - mongo
+
+variables:
+  MONGODB_URI: 'mongodb://mongo/conduit'
+  NODE_ENV: 'production'
 
 run_test: 
-  stage: test
   script:
     - npm run dev:install
     - npm run cy:verify
