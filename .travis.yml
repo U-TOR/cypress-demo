@@ -7,14 +7,14 @@ addons:
     packages:
     - libgconf-2-4
 
-cache:
-  # cache both npm modules and Cypress binary
-  directories:
-    - ~/.npm
-    - ~/.cache
-  override:
-    - npm run dev:install
-    - npm run cy:verify
+# cache:
+#   # cache both npm modules and Cypress binary
+#   directories:
+#     - ~/.npm
+#     - ~/.cache
+#   override:
+#     - npm run dev:install
+#     - npm run cy:verify
 
 services:
   - docker
