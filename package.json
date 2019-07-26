@@ -14,7 +14,7 @@
     "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
     "mongo:restore:local": "mongorestore --archive=db/minimal.archive --host=127.0.0.1 --port 27017",
     "mongo:restore:ci": "mongorestore --archive=db/minimal.archive --uri 'mongodb://mongo/conduit'",
-    "wait-for-server": "wait-on http://localhost:4100 && sleep 30",
+    "wait-for-server": "wait-on http://localhost:4100 && sleep 5",
     "cy:open": "$(npm bin)/cypress open",
     "cy:run": "$(npm bin)/cypress run",
     "cy:verify": "$(npm bin)/cypress verify",

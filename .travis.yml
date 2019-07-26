@@ -1,7 +1,5 @@
 language: node_js
-
-node_js:
-  - "11.8.0"
+node_js: "11.8.0"
 
 # if using Ubuntu 16 need this library
 # https://github.com/cypress-io/cypress-documentation/pull/1647
@@ -19,51 +17,16 @@ cache:
     - npm run dev:install
     - npm run cy:verify
 
-services:
-  - docker
+sudo: required
+services: mongodb
 
 before_install:
   - npm run dev:install
   - npm run cy:verify
-  - npm run mongo:start
-  - npm run mongo:restore
+  # - npm run mongo:start
+  - npm run mongo:restore:local
 
 script: 
   - nohup npm run dev:run &
   - npm run wait-for-server
   - npm run e2e_mochawesome
-
-# defaults: &defaults
-#   script:
-#     #   ## print all Travis environment variables for debugging
-#     - npm run start:ci &
-#     - npm run cy:run -- --record --parallel --group $STAGE_NAME
-#     # after all tests finish running we need
-#     # to kill all background jobs (like "npm start &")
-#     - kill $(jobs -p) || true
-
-# jobs:
-#   include:
-#     # we have multiple jobs to execute using just a single stage
-#     # but we can pass group name via environment variable to Cypress test runner
-#     - stage: test
-#       env:
-#         - STAGE_NAME=1x-electron
-#       <<: *defaults
-#     # run tests in parallel by including several test jobs with same name variable
-#     - stage: test
-#       env:
-#         - STAGE_NAME=4x-electron
-#       <<: *defaults
-#     - stage: test
-#       env:
-#         - STAGE_NAME=4x-electron
-#       <<: *defaults
-#     - stage: test
-#       env:
-#         - STAGE_NAME=4x-electron
-#       <<: *defaults
-#     - stage: test
-#       env:
-#         - STAGE_NAME=4x-electron
-#       <<: *defaults
