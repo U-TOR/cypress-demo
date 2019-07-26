@@ -28,14 +28,10 @@ app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, s
 
 if (!isProduction) {
   app.use(errorhandler());
-}
-
-if(isProduction){
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect('mongodb://localhost/conduit');
   mongoose.set('debug', true);
 }
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/conduit');
 
 require('./models/User');
 require('./models/Article');
