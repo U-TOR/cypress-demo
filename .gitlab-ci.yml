@@ -37,7 +37,7 @@ run_test:
   script:
     - npm run dev:install
     - npm run cy:verify
-    - npm run mongo:restore:ci
+    # - npm run mongo:restore:ci
     - nohup npm run dev:run &
     - npm run wait-for-server
     - npm run e2e_mochawesome
