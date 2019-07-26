@@ -1,9 +1,5 @@
 language: node_js
 
-node_js:
-  # Node 10.3+ includes npm@6 which has good "npm ci" command
-  - 11.8.0
-
 # if using Ubuntu 16 need this library
 # https://github.com/cypress-io/cypress-documentation/pull/1647
 addons:
@@ -17,14 +13,20 @@ cache:
     - ~/.npm
     - ~/.cache
   override:
-    - npm ci
+    - npm run dev:install
     - npm run cy:verify
 
 services:
   - docker
 
 before_install:
-  # - docker pull carlad/sinatra
+- npm run mongo:start
+- npm run mongo:restore
+
+script: 
+  - nohup npm run dev:run &
+  - npm run wait-for-server
+  - npm run e2e_mochawesome
 
 # defaults: &defaults
 #   script:
