@@ -12,7 +12,7 @@
     "mongo:start": "docker run -d --name realworld-mongo -p 27017:27017 -v db:/data/db mongo",
     "mongo:restore": "docker run --rm --link realworld-mongo:mongo -v $(pwd)/db:/backup mongo  bash -c 'mongorestore --archive=/backup/minimal.archive --host realworld-mongo:27017'",
     "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
-    "mongo:restore:local": "mongorestore --archive=db/minimal.archive --host=127.0.0.1",
+    "mongo:restore:local": "mongorestore --archive=db/minimal.archive --host=127.0.0.1 --port 27017",
     "wait-for-server": "wait-on http://localhost:4100",
     "cy:open": "$(npm bin)/cypress open",
     "cy:run": "$(npm bin)/cypress run",
