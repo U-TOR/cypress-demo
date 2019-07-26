@@ -9,7 +9,7 @@ variables:
 #   npm_config_cache: "$CI_PROJECT_DIR/.npm"
 #   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
   MONGODB_URI: 'mongodb://mongo/conduit'
-  NODE_ENV: 'production'
+  # NODE_ENV: 'production'
 
 # # cache using branch name
 # # https://gitlab.com/help/ci/caching/index.md
