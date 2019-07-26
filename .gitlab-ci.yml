@@ -1,15 +1,15 @@
 # first, install Cypress, then run all tests (in parallel)
-stages:
-  - build
-  - test
+# stages:
+#   - build
+#   - test
 
 # to cache both npm modules and Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
-# variables:
+variables:
 #   npm_config_cache: "$CI_PROJECT_DIR/.npm"
 #   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
-#   MONGODB_URI: 'mongodb://mongo/conduit'
-#   NODE_ENV: 'production'
+  MONGODB_URI: 'mongodb://mongo/conduit'
+  NODE_ENV: 'production'
 
 # # cache using branch name
 # # https://gitlab.com/help/ci/caching/index.md
@@ -38,13 +38,11 @@ run_test:
   script:
     - npm run dev:install
     - npm run cy:verify
-    # - npm run cy:verify
-    # - npm run dev:install
-    # - npm run cy:verify
+
     # - npm run mongo:start
     # - ps -aux | grep 21017
     # - npm run mongo:restore:local
-    # - nohup npm run dev:run &
-    # - npm run wait-for-server
-    # - npm run e2e_mochawesome
+    - nohup npm run dev:run &
+    - npm run wait-for-server
+    - npm run e2e_mochawesome
 
