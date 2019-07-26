@@ -1,4 +1,4 @@
-image: node:4.4.0
+image: cypress/browsers
 
 cache:
   key: "$CI_BUILD_REF_NAME"
