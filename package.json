@@ -6,7 +6,7 @@
   "scripts": {
     "client": "cd client && npm start",
     "server": "cd server && npm start",
-    "dev:install": "cd client && npm install ; cd ../server && npm install; npm install",
+    "dev:install": "cd client && npm install ; cd ../server && npm install; cd .. && npm install",
     "dev:run": "concurrently \"npm run server\" \"npm run client\"",
     "e2e_mochawesome": "npm run cleanup; npm run cy:run:record; npm run merge_reports; npm run generate_mochawesome_report",
     "mongo:start": "docker run -d --name realworld-mongo -p 27017:27017 -v db:/data/db mongo",
@@ -14,10 +14,10 @@
     "mongo:stop": "docker stop realworld-mongo && docker rm realworld-mongo",
     "mongo:restore:local": "mongorestore --archive=db/minimal.archive",
     "wait-for-server": "wait-on http://localhost:4100",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:verify": "cypress verify",
-    "cy:run:record": "cypress run --record --key 0eec5036-c20d-4e46-8839-1adf3705de77",
+    "cy:open": "$(npm bin)/cypress open",
+    "cy:run": "$(npm bin)/cypress run",
+    "cy:verify": "$(npm bin)/cypress verify",
+    "cy:run:record": "$(npm bin)/cypress run --record --key 0eec5036-c20d-4e46-8839-1adf3705de77",
     "merge_reports": "mochawesome-merge --reportDir mochawesome-report > mochawesome-report/output.json",
     "generate_mochawesome_report": "marge mochawesome-report/output.json",
     "cleanup": "rm -fr mochawesome-report"

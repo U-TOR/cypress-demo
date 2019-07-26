@@ -1,9 +1,5 @@
 # FROM docker
 
-# EXPOSE 3000
-# EXPOSE 4100
-# EXPOSE 27017
-
 # # Install Node
 # RUN apk add --update nodejs npm 
 
@@ -20,8 +16,10 @@ RUN apt-get update \
     && apt-get install -y nodejs
 
 
-RUN apt-get update && apt-get install -y xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
+# Install Cypress
+RUN apt-get update && apt-get install -y xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 \
+    && npm install cypress
 
-# COPY . /app
-# WORKDIR /app
+#COPY . /app
+#WORKDIR /app
 

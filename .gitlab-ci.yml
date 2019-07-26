@@ -6,10 +6,11 @@ stages:
 
 run_test: 
   stage: test
-  script: 
+  script:
+    - npm run cy:verify
     - npm run dev:install
     # - npm run mongo:start
-    # - npm run mongo:restore
+    - npm run mongo:restore:local
     - nohup npm run dev:run &
-    - npm test
+    - npm run e2e_mochawesome
 
