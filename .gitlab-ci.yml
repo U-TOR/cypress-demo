@@ -19,8 +19,8 @@ variables:
 #     - .npm
 #     - cache/Cypress
 #     - node_modules
-# services:
-#   - mongo
+services:
+  - mongo
 
 # this job installs NPM dependencies and Cypress
 # install:
