@@ -19,7 +19,7 @@ cache:
     - cache/Cypress
     - node_modules
 services:
-  - mongo
+  - mongo:latest
 
 # this job installs NPM dependencies and Cypress
 # install:
