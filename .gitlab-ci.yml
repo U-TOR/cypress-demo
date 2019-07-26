@@ -1,4 +1,4 @@
-image: "vmaksimenko/cypress-mongo"
+image: "vmaksimenko/mongo-cypress"
 
 stages: 
   - test
